@@ -1,0 +1,1348 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/14/2020 4:19:41 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-C0AU6VR"
+  DTS:CreatorName="DESKTOP-C0AU6VR\lab"
+  DTS:DTSID="{521C6CCA-4669-4848-B27C-194AADED6850}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="etl"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{B48FA680-6DAA-43AD-B8AB-A46A51D9EAAA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[grades]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{DBF5258F-5655-4C90-AFA2-0D96148C8C53}"
+      DTS:ObjectName="grades">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\lab\data-dw\grades.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="semester"
+              DTS:DTSID="{B9FF2407-3766-4E3C-B0A2-D408F2E51694}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="year"
+              DTS:DTSID="{30A6FE22-0903-4612-8870-90DBBD723620}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="course"
+              DTS:DTSID="{BEC8B94C-E112-4313-BB36-0EC05151CE4E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="teacher_id"
+              DTS:DTSID="{7B95DD90-E0C6-4B97-9095-89A10B34D8F1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="grade"
+              DTS:DTSID="{7F9FBBB4-42B5-48D8-A58C-7D82F7F8243B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="exam"
+              DTS:DTSID="{71DB7C8E-135C-4600-A520-91CCB5C7BB01}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="student_id"
+              DTS:DTSID="{E058DE0B-498F-41C9-BCCF-33D753DDC13B}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.aied]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{56F349AA-C80C-4995-8A8A-BE22C29991FB}"
+      DTS:ObjectName="LocalHost.aied">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=aied;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[students]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{E65D42B6-9DEF-474B-8806-ABDFD3EC547F}"
+      DTS:ObjectName="students">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\lab\data-dw\students.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="spec"
+              DTS:DTSID="{AC3DAF8E-B7FF-418A-805D-D2A47CCD1E15}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="sub_spec"
+              DTS:DTSID="{20B85455-59C2-4B9D-9670-0ADBF9CC27FC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="sub_spec2"
+              DTS:DTSID="{A510D058-881E-4F1E-8C5D-98657445154B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="gender"
+              DTS:DTSID="{3B9D1286-8A13-4E38-A12C-26753BDE8ECE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="student_id"
+              DTS:DTSID="{C4FA57C1-936C-49AC-9E6A-5D5DF9436018}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Flush tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{88E101B6-9406-4962-959F-B57492179453}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Flush tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{56F349AA-C80C-4995-8A8A-BE22C29991FB}"
+          SQLTask:SqlStatementSource="DELETE FROM [dbo].[grades]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load grades"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{CB39F2A9-E3DD-463F-BA3F-DCE8DFF64556}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load grades"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load grades\Clean grades"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Clean grades"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\load grades\Clean grades.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load grades\Clean grades.Inputs[Conditional Split Input].Columns[grade]"
+                      cachedDataType="r4"
+                      cachedName="grade"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[grade]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load grades\Clean grades.Outputs[correct]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="correct"
+                  synchronousInputId="Package\load grades\Clean grades.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\load grades\grades.Outputs[Flat File Source Output].Columns[grade]} &gt;= 2</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">grade &gt;= 2</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load grades\Clean grades.Outputs[incorrect]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="incorrect"
+                  synchronousInputId="Package\load grades\Clean grades.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load grades\Clean grades.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\load grades\Clean grades.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load grades\Clean grades.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load grades\Clean grades.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load grades\Clean grades.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load grades\Clean grades.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load grades\grades"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="grades"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load grades\grades.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[grades]"
+                  connectionManagerRefId="Package.ConnectionManagers[grades]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load grades\grades.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[semester]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[semester]"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[semester]"
+                      name="semester"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[year]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[year]"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[year]"
+                      name="year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[course]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[course]"
+                      length="10"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[course]"
+                      name="course"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[teacher_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[teacher_id]"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[teacher_id]"
+                      name="teacher_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[grade]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[grade]"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[grade]"
+                      name="grade"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[exam]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[exam]"
+                      length="2"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[exam]"
+                      name="exam"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[student_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[student_id]"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[student_id]"
+                      name="student_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[semester]"
+                      dataType="i1"
+                      name="semester" />
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[year]"
+                      dataType="i2"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[course]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="course" />
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[teacher_id]"
+                      dataType="i4"
+                      name="teacher_id" />
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[grade]"
+                      dataType="r4"
+                      name="grade" />
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[exam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="exam" />
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Output].ExternalColumns[student_id]"
+                      dataType="i4"
+                      name="student_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load grades\grades.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load grades\grades.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load grades\grades table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="grades table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[grades]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load grades\grades table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.aied]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.aied]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load grades\grades table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].Columns[semester]"
+                      cachedDataType="i1"
+                      cachedName="semester"
+                      externalMetadataColumnId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[semester]"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[semester]" />
+                    <inputColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].Columns[year]"
+                      cachedDataType="i2"
+                      cachedName="year"
+                      externalMetadataColumnId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[year]"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[year]" />
+                    <inputColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].Columns[course]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="course"
+                      externalMetadataColumnId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[course]"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[course]" />
+                    <inputColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].Columns[teacher_id]"
+                      cachedDataType="i4"
+                      cachedName="teacher_id"
+                      externalMetadataColumnId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[teacher_id]"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[teacher_id]" />
+                    <inputColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].Columns[grade]"
+                      cachedDataType="r4"
+                      cachedName="grade"
+                      externalMetadataColumnId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[grade]"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[grade]" />
+                    <inputColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].Columns[exam]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="exam"
+                      externalMetadataColumnId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[exam]"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[exam]" />
+                    <inputColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].Columns[student_id]"
+                      cachedDataType="i4"
+                      cachedName="student_id"
+                      externalMetadataColumnId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[student_id]"
+                      lineageId="Package\load grades\grades.Outputs[Flat File Source Output].Columns[student_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[semester]"
+                      dataType="i2"
+                      name="semester" />
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[year]"
+                      dataType="i2"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[course]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="course" />
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[teacher_id]"
+                      dataType="i4"
+                      name="teacher_id" />
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[grade]"
+                      dataType="r4"
+                      name="grade" />
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[exam]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="exam" />
+                    <externalMetadataColumn
+                      refId="Package\load grades\grades table.Inputs[OLE DB Destination Input].ExternalColumns[student_id]"
+                      dataType="i4"
+                      name="student_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load grades\grades table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load grades\grades table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load grades\grades table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load grades\grades table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load grades\grades table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load grades\grades table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load grades.Paths[correct]"
+              endId="Package\load grades\grades table.Inputs[OLE DB Destination Input]"
+              name="correct"
+              startId="Package\load grades\Clean grades.Outputs[correct]" />
+            <path
+              refId="Package\load grades.Paths[Flat File Source Output]"
+              endId="Package\load grades\Clean grades.Inputs[Conditional Split Input]"
+              name="Flat File Source Output"
+              startId="Package\load grades\grades.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load students"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{372BCB3B-30BD-415E-AFDD-7F9A8A53B77D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load students"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load students\students"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="students"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load students\students.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[students]"
+                  connectionManagerRefId="Package.ConnectionManagers[students]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load students\students.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load students\students.Outputs[Flat File Source Output].Columns[spec]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load students\students.Outputs[Flat File Source Output].ExternalColumns[spec]"
+                      length="3"
+                      lineageId="Package\load students\students.Outputs[Flat File Source Output].Columns[spec]"
+                      name="spec"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\load students\students.Outputs[Flat File Source Output].Columns[sub_spec]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load students\students.Outputs[Flat File Source Output].ExternalColumns[sub_spec]"
+                      length="3"
+                      lineageId="Package\load students\students.Outputs[Flat File Source Output].Columns[sub_spec]"
+                      name="sub_spec"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\load students\students.Outputs[Flat File Source Output].Columns[sub_spec2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load students\students.Outputs[Flat File Source Output].ExternalColumns[sub_spec2]"
+                      length="3"
+                      lineageId="Package\load students\students.Outputs[Flat File Source Output].Columns[sub_spec2]"
+                      name="sub_spec2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\load students\students.Outputs[Flat File Source Output].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load students\students.Outputs[Flat File Source Output].ExternalColumns[gender]"
+                      length="1"
+                      lineageId="Package\load students\students.Outputs[Flat File Source Output].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\load students\students.Outputs[Flat File Source Output].Columns[student_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load students\students.Outputs[Flat File Source Output].ExternalColumns[student_id]"
+                      lineageId="Package\load students\students.Outputs[Flat File Source Output].Columns[student_id]"
+                      name="student_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load students\students.Outputs[Flat File Source Output].ExternalColumns[spec]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="spec" />
+                    <externalMetadataColumn
+                      refId="Package\load students\students.Outputs[Flat File Source Output].ExternalColumns[sub_spec]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="sub_spec" />
+                    <externalMetadataColumn
+                      refId="Package\load students\students.Outputs[Flat File Source Output].ExternalColumns[sub_spec2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="sub_spec2" />
+                    <externalMetadataColumn
+                      refId="Package\load students\students.Outputs[Flat File Source Output].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\load students\students.Outputs[Flat File Source Output].ExternalColumns[student_id]"
+                      dataType="i4"
+                      name="student_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load students\students.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load students\students.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\load students\students.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\load students\students.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load students\students.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load students\students.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load students\students.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load students\students table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="students table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[students]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load students\students table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.aied]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.aied]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load students\students table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load students\students table.Inputs[OLE DB Destination Input].Columns[spec]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="spec"
+                      externalMetadataColumnId="Package\load students\students table.Inputs[OLE DB Destination Input].ExternalColumns[spec]"
+                      lineageId="Package\load students\students.Outputs[Flat File Source Output].Columns[spec]" />
+                    <inputColumn
+                      refId="Package\load students\students table.Inputs[OLE DB Destination Input].Columns[sub_spec]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="sub_spec"
+                      externalMetadataColumnId="Package\load students\students table.Inputs[OLE DB Destination Input].ExternalColumns[sub_spec]"
+                      lineageId="Package\load students\students.Outputs[Flat File Source Output].Columns[sub_spec]" />
+                    <inputColumn
+                      refId="Package\load students\students table.Inputs[OLE DB Destination Input].Columns[sub_spec2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="sub_spec2"
+                      externalMetadataColumnId="Package\load students\students table.Inputs[OLE DB Destination Input].ExternalColumns[sub_spec2]"
+                      lineageId="Package\load students\students.Outputs[Flat File Source Output].Columns[sub_spec2]" />
+                    <inputColumn
+                      refId="Package\load students\students table.Inputs[OLE DB Destination Input].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\load students\students table.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      lineageId="Package\load students\students.Outputs[Flat File Source Output].Columns[gender]" />
+                    <inputColumn
+                      refId="Package\load students\students table.Inputs[OLE DB Destination Input].Columns[student_id]"
+                      cachedDataType="i4"
+                      cachedName="student_id"
+                      externalMetadataColumnId="Package\load students\students table.Inputs[OLE DB Destination Input].ExternalColumns[student_id]"
+                      lineageId="Package\load students\students.Outputs[Flat File Source Output].Columns[student_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load students\students table.Inputs[OLE DB Destination Input].ExternalColumns[spec]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="spec" />
+                    <externalMetadataColumn
+                      refId="Package\load students\students table.Inputs[OLE DB Destination Input].ExternalColumns[sub_spec]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="sub_spec" />
+                    <externalMetadataColumn
+                      refId="Package\load students\students table.Inputs[OLE DB Destination Input].ExternalColumns[sub_spec2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="sub_spec2" />
+                    <externalMetadataColumn
+                      refId="Package\load students\students table.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\load students\students table.Inputs[OLE DB Destination Input].ExternalColumns[student_id]"
+                      dataType="i4"
+                      name="student_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load students\students table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load students\students table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load students\students table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load students\students table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load students\students table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load students\students table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load students.Paths[Flat File Source Output]"
+              endId="Package\load students\students table.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\load students\students.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EFC43B40-AE0E-46AD-A799-A23468490FDD}"
+      DTS:From="Package\Flush tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\load grades" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{058FB747-43F0-4E49-9E10-564F58DE43D2}"
+      DTS:From="Package\load grades"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\load students" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\load grades"
+          TopLeft="108,157" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Flush tables"
+          TopLeft="111,43" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="176.75,85">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72"
+              Start="0,0"
+              End="0,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="142,42"
+          Id="Package\load students"
+          TopLeft="97,256" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="171.5,199">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\load grades">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="111,42"
+          Id="Package\load grades\grades"
+          TopLeft="200,127" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\load grades\grades table"
+          TopLeft="185,353" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\load grades\Clean grades"
+          TopLeft="183,238" />
+        <EdgeLayout
+          Id="Package\load grades.Paths[Flat File Source Output]"
+          TopLeft="254.25,169">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\load grades.Paths[correct]"
+          TopLeft="253.25,280">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-16.07599609375,28.16357421875,32.1519921875,9.1728515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load grades\grades table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load students">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="119,42"
+          Id="Package\load students\students"
+          TopLeft="205,92" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\load students\students table"
+          TopLeft="191,264" />
+        <EdgeLayout
+          Id="Package\load students.Paths[Flat File Source Output]"
+          TopLeft="264.25,134">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,130"
+              Start="0,0"
+              End="0,122.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,122.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load students\students table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
