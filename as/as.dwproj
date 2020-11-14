@@ -23,6 +23,10 @@
       <Name>Students.dim</Name>
       <FullPath>Students.dim</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Semester.dim</Name>
+      <FullPath>Semester.dim</FullPath>
+    </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>
