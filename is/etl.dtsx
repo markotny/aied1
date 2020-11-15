@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{73AEFFCC-9862-46CF-8E8E-35BD94878274}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{4314B48D-83F5-47A8-8F56-C3211FA98EEB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -318,23 +318,57 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Add default rows"
+      DTS:refId="Package\Add missing"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
       DTS:DTSID="{1CFF9C67-81E7-42C1-8533-5945C8B49150}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Add default rows">
+      DTS:ObjectName="Add missing">
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Add default rows\teacher titles"
+          DTS:refId="Package\Add missing\course groups"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{cd199b4d-decc-4a3e-9232-7987a7e82b40}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="course groups"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{56F349AA-C80C-4995-8A8A-BE22C29991FB}"
+              SQLTask:SqlStatementSource="insert into course_groups (course, course_group)&#xA;select g.course, -1&#xA;from grades g&#xA;left join course_groups cg on g.course = cg.course&#xA;where cg.course is null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Add missing\default teacher"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DF1EEACC-C5E4-41EB-9C52-95825ED06FB1}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="default teacher"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{56F349AA-C80C-4995-8A8A-BE22C29991FB}"
+              SQLTask:SqlStatementSource="insert into&#xA;&#x9;teachers (teacher_id, gender, faculty, institute, title_id)&#xA;values (-1, '?', '?', '?',-1)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Add missing\default teacher title"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{d3df279b-6c78-43a9-8fa1-46d884d43007}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="teacher titles"
+          DTS:ObjectName="default teacher title"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
@@ -345,10 +379,10 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Add default rows\teachers"
+          DTS:refId="Package\Add missing\teachers"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{DF1EEACC-C5E4-41EB-9C52-95825ED06FB1}"
+          DTS:DTSID="{4f809cbd-4bd4-41e8-8260-9d348ea3f7d1}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="teachers"
@@ -358,19 +392,35 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{56F349AA-C80C-4995-8A8A-BE22C29991FB}"
-              SQLTask:SqlStatementSource="insert into&#xA;&#x9;teachers (teacher_id, gender, faculty, institute, title_id)&#xA;values (-1, '?', '?', '?',-1)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="insert into teachers (teacher_id, gender, faculty, institute, title_id)&#xA;select g.teacher_id,'?','?','?',-1 from grades g &#xA;left join teachers t on g.teacher_id = t.teacher_id &#xA;where t.teacher_id is null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\Add default rows.PrecedenceConstraints[Constraint]"
+          DTS:refId="Package\Add missing.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
           DTS:DTSID="{F5324E48-79FB-49D7-AA9A-CDE6EC1A0A89}"
-          DTS:From="Package\Add default rows\teachers"
+          DTS:From="Package\Add missing\default teacher"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\Add default rows\teacher titles" />
+          DTS:To="Package\Add missing\default teacher title" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Add missing.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{FBA53409-B6B1-49E0-B548-CA567425D0CD}"
+          DTS:From="Package\Add missing\default teacher title"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Add missing\teachers" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Add missing.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{0EABE38B-A318-41F7-A896-568A128269A3}"
+          DTS:From="Package\Add missing\teachers"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Add missing\course groups" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -3074,7 +3124,7 @@
       DTS:From="Package\Load data"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Add default rows" />
+      DTS:To="Package\Add missing" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -3199,7 +3249,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="156,510"
+          PanelSize="156,511"
           Size="156,554"
           Id="Package\Truncate database"
           TopLeft="183,158" />
@@ -3341,16 +3391,68 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="119,42"
-          Id="Package\Add default rows\teachers"
+          Size="150,42"
+          Id="Package\Add missing\default teacher"
           TopLeft="16,5.5" />
         <NodeLayout
-          Size="140,42"
-          Id="Package\Add default rows\teacher titles"
+          Size="171,42"
+          Id="Package\Add missing\default teacher title"
           TopLeft="5.50000000000001,107.5" />
         <EdgeLayout
-          Id="Package\Add default rows.PrecedenceConstraints[Constraint]"
-          TopLeft="75.5,47.5">
+          Id="Package\Add missing.PrecedenceConstraints[Constraint]"
+          TopLeft="91,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Add missing\course groups"
+          TopLeft="18.5,311.5" />
+        <NodeLayout
+          Size="119,42"
+          Id="Package\Add missing\teachers"
+          TopLeft="31.5,209.5" />
+        <EdgeLayout
+          Id="Package\Add missing.PrecedenceConstraints[Constraint 1]"
+          TopLeft="91,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Add missing.PrecedenceConstraints[Constraint 2]"
+          TopLeft="91,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3373,9 +3475,9 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="151,204"
-          Size="151,248"
-          Id="Package\Add default rows"
+          PanelSize="182,408"
+          Size="182,452"
+          Id="Package\Add missing"
           TopLeft="623,159" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
@@ -3383,9 +3485,9 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="57,-151.5"
+              EndConnector="57,-49.5"
               Start="0,0"
-              End="49.5,-151.5">
+              End="49.5,-49.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3396,13 +3498,13 @@
                     Point2="28.5,0"
                     Point3="28.5,-4" />
                   <mssgle:LineSegment
-                    End="28.5,-147.5" />
+                    End="28.5,-45.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="28.5,-147.5"
-                    Point2="28.5,-151.5"
-                    Point3="32.5,-151.5" />
+                    Point1="28.5,-45.5"
+                    Point2="28.5,-49.5"
+                    Point3="32.5,-49.5" />
                   <mssgle:LineSegment
-                    End="49.5,-151.5" />
+                    End="49.5,-49.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
