@@ -27,6 +27,22 @@
       <Name>Semester.dim</Name>
       <FullPath>Semester.dim</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Teachers.dim</Name>
+      <FullPath>Teachers.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Course Groups.dim</Name>
+      <FullPath>Course Groups.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Course Credit.dim</Name>
+      <FullPath>Course Credit.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Workload.dim</Name>
+      <FullPath>Workload.dim</FullPath>
+    </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>
