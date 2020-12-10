@@ -36,12 +36,12 @@
       <FullPath>Course Groups.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Course Credit.dim</Name>
-      <FullPath>Course Credit.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>Workload.dim</Name>
       <FullPath>Workload.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Credit Type.dim</Name>
+      <FullPath>Credit Type.dim</FullPath>
     </ProjectItem>
   </Dimensions>
   <DataSources>
